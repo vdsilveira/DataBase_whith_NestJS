@@ -41,7 +41,7 @@ Instale as dependências necessárias:
 
 npm i nanoid@3 sqlite3 typeorm @nestjs/typeorm class-validator class-transformer
 
-## 🧮 Criação de Instancia
+## 📂 Criação de Instancia
 
 Para criar uma nova tabela, execute o seguinte comando:
 ```bash
@@ -65,6 +65,27 @@ REST Client - Huachao Mao: Com esta extensão, você pode acessar diretamente os
 ## ✔️ Adicionar Colunas 
 
 Dentro de .src/user/dto/create-user.dto.ts, crie as colunas da tabela com @Annotation de verificação.
+```bash
+export class CreateUserDto {
+  @IsString()
+  name: string;
+
+  @IsEmail()
+  email: string;
+
+  @IsString()
+  privateKey: string;
+
+  @IsString()
+  senha: string;
+
+  @IsString()
+  acessType: string;
+}
+
+
+```
+
 
 ## ✔️ Habilitar Verificação da Tabela
 
