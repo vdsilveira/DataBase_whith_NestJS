@@ -22,52 +22,187 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+ # Backend Nest.js - Integração com Banco de Dados
 
-```bash
-$ npm install
-```
+Este projeto demonstra a integração do Nest.js com um banco de dados usando o TypeORM e SQLite.
 
-## Running the app
+## Inicialização do Nest
+
+Para iniciar um novo projeto Nest, execute o seguinte comando:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npx @nestjs/cli new NOME_DA_PASTA
 ```
+## Configurações para Banco de Dados
 
-## Test
+Instale as dependências necessárias:
+
+npm i nanoid@3 sqlite3 typeorm @nestjs/typeorm class-validator class-transformer
+
+## Criação de Tabela
+
+Para criar uma nova tabela, execute o seguinte comando:
+```bash
+nest g resource NOME_DA_TABELA
+```
+Na pasta src, será criada uma pasta para a tabela.
+
+## Inicialização do Nest
+
+Para iniciar o servidor, utilize o comando:
 
 ```bash
-# unit tests
-$ npm run test
+npm run start:dev
 
-# e2e tests
-$ npm run test:e2e
+```
+## Extensões do VS Code
 
-# test coverage
-$ npm run test:cov
+REST Client - Huachao Mao: Com esta extensão, você pode acessar diretamente os endpoints e ver as respostas das solicitações HTTP.
+
+
+## Adicionar Colunas de Tabela
+
+Dentro de .src/user/dto/create-user.dto.ts, crie as colunas da tabela com @Annotation de verificação.
+
+## Habilitar Verificação da Tabela
+
+Dentro de .src/main.ts, adicione o seguinte trecho de código:
+
+```bash
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+    }),
+  );
+  await app.listen(3000);
+}
+bootstrap();
+
+
+```
+`OBS: app.useglobalPipes foi adicionado para habilitar verificação da tabela pelos annotation's.`
+
+## Conexão TypeORM
+
+Dentro de .src/app.modules.ts, adicione o seguinte trecho de código:
+```bash
+
+@Module({
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: 'db.marketplace',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true,
+    }),
+    UserModule,
+  ],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
+
 ```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Dentro de .src/user/user.modules.ts, adicione o seguinte trecho de código:
 
-## Stay in touch
+```bash
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+@@Module({
+  imports: [TypeOrmModule.forFeature([User])],
+  controllers: [UserController],
+  providers: [UserService],
+})
+export class UserModule {}
 
-## License
+```
+## Adicionando Entities no Banco de Dados
 
-Nest is [MIT licensed](LICENSE).
+Dentro de .src/user/entities/user.entity.ts, adicione o seguinte trecho de código:
+
+import { BeforeInsert, Column, Entity, PrimaryColumn } from 'typeorm';
+import { nanoid } from 'nanoid';
+
+```bash
+@Entity('users')
+export class user {
+  @PrimaryColumn()
+  id: string;
+
+  @Column()
+  name: string;
+
+  @Column()
+  email: string;
+
+  @Column()
+  privateKey: string;
+
+  @Column()
+  senha: string;
+
+  @Column()
+  acessType: string;
+
+  @BeforeInsert()
+  generateId() {
+    this.id = `user_${nanoid()}`;
+  }
+}
+```
+## Modificando o User Service
+Dentro de .src/user/user.service.ts, adicione o seguinte trecho de código:
+
+```bash
+import { Injectable } from '@nestjs/common';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { User } from './entities/user.entity';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+
+@Injectable()
+export class UserService {
+  constructor(
+    @InjectRepository(User)
+    private readonly repository: Repository<User>,
+  ) {}
+
+  create(dto: CreateUserDto) {
+    const user = this.repository.create(dto);
+    return this.repository.save(user);
+  }
+
+  findAll() {
+    return this.repository.find();
+  }
+
+  async findOne(id: string) {
+    return this.repository.findOne({ where: { id } });
+  }
+
+  async update(id: string, dto: UpdateUserDto) {
+    const user = await this.repository.findOne({ where: { id } });
+    if (!user) return null;
+    this.repository.merge(user, dto);
+    return this.repository.save(user);
+  }
+
+  async remove(id: string) {
+    const user = await this.repository.findOne({ where: { id } });
+    if (!user) return null;
+    return this.repository.remove(user);
+  }
+}
+
+
+```
+
+Esse arquivo README.md contém todas as instruções necessárias para configurar e executar o projeto Nest.js com integração ao banco de dados. Certifique-se de substituir as seções relevantes com os detalhes específicos do seu projeto antes de usar.
