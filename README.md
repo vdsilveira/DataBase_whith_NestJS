@@ -61,6 +61,7 @@ npm run start:dev
 
 REST Client - Huachao Mao: Com esta extensão, você pode acessar diretamente os endpoints e ver as respostas das solicitações HTTP.
 
+![Executando Extensão](./src/img/extensao.png)
 
 ## ✔️ Adicionar Colunas 
 
