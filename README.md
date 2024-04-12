@@ -35,13 +35,13 @@ Para iniciar um novo projeto Nest, execute o seguinte comando:
 ```bash
 npx @nestjs/cli new NOME_DA_PASTA
 ```
-## 🛠️ Configurações para Banco de Dados
+##  📂 Configurações para Banco de Dados
 
 Instale as dependências necessárias:
 
 npm i nanoid@3 sqlite3 typeorm @nestjs/typeorm class-validator class-transformer
 
-## 📂 Criação de Instancia
+## 🛠️ Criação de Instancia
 
 Para criar uma nova tabela, execute o seguinte comando:
 ```bash
