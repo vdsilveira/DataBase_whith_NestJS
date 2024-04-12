@@ -28,19 +28,19 @@
 
 Este projeto demonstra a integração do Nest.js com um banco de dados usando o TypeORM e SQLite.
 
-## ⚙️  Inicialização do Nest
+## 📂  Inicialização do Nest
 
 Para iniciar um novo projeto Nest, execute o seguinte comando:
 
 ```bash
 npx @nestjs/cli new NOME_DA_PASTA
 ```
-##  📂 Configurações para Banco de Dados
+## ⚙️  Configurações para Banco de Dados
 
 Instale as dependências necessárias:
-
+```bash
 npm i nanoid@3 sqlite3 typeorm @nestjs/typeorm class-validator class-transformer
-
+```
 ## 🛠️ Criação de Instancia
 
 Para criar uma nova tabela, execute o seguinte comando:
