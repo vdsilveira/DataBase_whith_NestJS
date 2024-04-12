@@ -231,14 +231,14 @@ Dentro de .src/user/user.http faça as chamadas utilizando a extensão REST Clie
 
 ### Executando POST:
 
-![Executando POST](url_da_imagem_post)
+![Executando POST](./src/img/post.png)
 
 ### Executando GET:
 
-![Executando GET](url_da_imagem_get)
+![Executando GET](./src/img/get.png)
 
 ### Executando DELETE:
 
-![Executando DELETE](url_da_imagem_delete)
+![Executando DELETE](./src/img/delete.png)
 
 Esse arquivo README.md contém todas as instruções necessárias para configurar e executar o projeto Nest.js com integração ao banco de dados. Certifique-se de substituir as seções relevantes com os detalhes específicos do seu projeto antes de usar.
