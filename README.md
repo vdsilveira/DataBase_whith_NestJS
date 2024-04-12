@@ -28,14 +28,14 @@
 
 Este projeto demonstra a integração do Nest.js com um banco de dados usando o TypeORM e SQLite.
 
-## ⚙️ Inicialização do Nest
+## ⚙️  Inicialização do Nest
 
 Para iniciar um novo projeto Nest, execute o seguinte comando:
 
 ```bash
 npx @nestjs/cli new NOME_DA_PASTA
 ```
-##🛠️ Configurações para Banco de Dados
+## 🛠️ Configurações para Banco de Dados
 
 Instale as dependências necessárias:
 
@@ -49,7 +49,7 @@ nest g resource NOME_DA_TABELA
 ```
 Na pasta src, será criada uma pasta para a tabela.
 
-##✔️ Inicialização do Nest
+## ✔️ Inicialização do Nest
 
 Para iniciar o servidor, utilize o comando:
 
@@ -57,7 +57,7 @@ Para iniciar o servidor, utilize o comando:
 npm run start:dev
 
 ```
-## ✔️Extensões do VS Code
+## ✔️ Extensões do VS Code
 
 REST Client - Huachao Mao: Com esta extensão, você pode acessar diretamente os endpoints e ver as respostas das solicitações HTTP.
 
@@ -66,7 +66,7 @@ REST Client - Huachao Mao: Com esta extensão, você pode acessar diretamente os
 
 Dentro de .src/user/dto/create-user.dto.ts, crie as colunas da tabela com @Annotation de verificação.
 
-## ✔️Habilitar Verificação da Tabela
+## ✔️ Habilitar Verificação da Tabela
 
 Dentro de .src/main.ts, adicione o seguinte trecho de código:
 
