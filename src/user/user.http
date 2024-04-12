@@ -1,0 +1,31 @@
+@name = vinicius
+@email = chico@gmail.com
+@privateKey = shfgeduf
+@balance = 10
+@senha = 123456
+@acessType = cliente
+
+### Listar usuários
+GET http://localhost:3000/user
+
+### Obter usuário
+GET http://localhost:3000/user/1
+
+### Criar usuário
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+    "name": "{{name}}",
+    "email": "{{email}}",
+    "privateKey": "{{privateKey}}",
+    "senha": "{{senha}}",
+    "acessType": "{{acessType}}"
+}
+
+### Atualizar usuário
+PATCH http://localhost:3000/user/
+
+
+### Deletar usuário
+DELETE http://localhost:3000/user/user_sdhPuvb2dAl16s_wHYvid
