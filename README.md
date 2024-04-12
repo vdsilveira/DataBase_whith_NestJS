@@ -225,5 +225,20 @@ export class UserService {
 
 
 ```
+## ✅ Realizando chamadas:
+
+Dentro de .src/user/user.http faça as chamadas utilizando a extensão REST Client (à direita):
+
+### Executando POST:
+
+![Executando POST](url_da_imagem_post)
+
+### Executando GET:
+
+![Executando GET](url_da_imagem_get)
+
+### Executando DELETE:
+
+![Executando DELETE](url_da_imagem_delete)
 
 Esse arquivo README.md contém todas as instruções necessárias para configurar e executar o projeto Nest.js com integração ao banco de dados. Certifique-se de substituir as seções relevantes com os detalhes específicos do seu projeto antes de usar.
