@@ -1,15 +1,19 @@
-@name = vinicius
-@email = chico@gmail.com
+@name = jack
+@email = jack@gmail.com
 @privateKey = shfgeduf
-@balance = 10
-@senha = 123456
-@acessType = cliente
+
+@senha = 12345233
+@acessType = fornecedor
+
+@balance = 5
 
 ### Listar usuários
 GET http://localhost:3000/user
 
 ### Obter usuário
-GET http://localhost:3000/user/1
+GET http://localhost:3000/user/chico@gmail.com/123456
+
+
 
 ### Criar usuário
 POST http://localhost:3000/user
@@ -20,12 +24,16 @@ Content-Type: application/json
     "email": "{{email}}",
     "privateKey": "{{privateKey}}",
     "senha": "{{senha}}",
-    "acessType": "{{acessType}}"
+    "acessType": "{{acessType}}",
+    "balance":"{{balance}}"
 }
 
 ### Atualizar usuário
 PATCH http://localhost:3000/user/
+Content-Type: application/json
+
+{"balance":"{{balance}}"}
 
 
 ### Deletar usuário
-DELETE http://localhost:3000/user/user_sdhPuvb2dAl16s_wHYvid
+DELETE http://localhost:3000/user/user_aSlsJMNOAMAv8Isoqsgyc

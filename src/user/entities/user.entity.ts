@@ -21,6 +21,9 @@ export class user {
   @Column()
   acessType: string;
 
+  @Column()
+  balance: string;
+
   @BeforeInsert()
   generateId() {
     this.id = `user_${nanoid()}`;

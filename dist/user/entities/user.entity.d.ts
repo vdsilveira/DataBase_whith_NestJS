@@ -5,5 +5,6 @@ export declare class user {
     privateKey: string;
     senha: string;
     acessType: string;
+    balance: string;
     generateId(): void;
 }

@@ -10,9 +10,14 @@ export class CreateUserDto {
   @IsString()
   privateKey: string;
 
+  
   @IsString()
   senha: string;
 
   @IsString()
   acessType: string;
+
+  @IsString()
+   balance: string;
+
 }

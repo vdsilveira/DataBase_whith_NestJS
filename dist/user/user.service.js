@@ -28,8 +28,11 @@ let UserService = class UserService {
     findAll() {
         return this.repository.find();
     }
-    async findOne(id) {
-        return this.repository.findOne({ where: { id } });
+    async findOne(email, senha) {
+        const user = await this.repository.findOne({ where: { email, senha } });
+        if (!user)
+            return null;
+        return user;
     }
     async update(id, dto) {
         const user = await this.repository.findOne({ where: { id } });

@@ -21,9 +21,12 @@ export class UserService {
     return this.repository.find();
   }
 
-  async findOne(id: string) {
-    return this.repository.findOne({ where: { id } });
-  }
+  async findOne(email: string, senha: string) {
+    const user = await this.repository.findOne({ where: { email, senha } });
+    if (!user) return null
+    return user;
+}
+
 
   async update(id: string, dto: UpdateUserDto) {
     const user = await this.repository.findOne({ where: { id } });
