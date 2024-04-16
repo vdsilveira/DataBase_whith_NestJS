@@ -2,7 +2,9 @@ const crypto = require('crypto');
 const { ethers } = require("ethers");
 
 // Chave secreta para criptografia. Certifique-se de mantê-la segura!
-const secretKey = 'mktplace';
+const secretKey = 'process.env_KEY';
+
+
 const algorithm = 'aes-128-cbc'; // Alterado para AES-128
 const iv = Buffer.alloc(16, 0);
 
@@ -32,8 +34,7 @@ function encryptKey(){
   const senha = randomWallet.privateKey;
   const encrypted = encrypt(senha);
 
-  console.log("Chave privada:", senha);
-  console.log("Chave privada criptografada:", encrypted);
+
   return encrypted;
 }
 
