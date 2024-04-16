@@ -31,7 +31,7 @@ let UserService = class UserService {
     async findOne(email, senha) {
         const user = await this.repository.findOne({ where: { email, senha } });
         if (!user)
-            return null;
+            throw new common_1.UnauthorizedException();
         return user;
     }
     async update(id, dto) {
