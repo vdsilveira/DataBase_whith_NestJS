@@ -6,7 +6,7 @@
 @acessType = fornecedor
 
 @balance = 5
-
+@PublicKey =  xxx
 ### Listar usuários
 GET http://localhost:3000/user
 
@@ -25,7 +25,8 @@ Content-Type: application/json
     "privateKey": "{{privateKey}}",
     "senha": "{{senha}}",
     "acessType": "{{acessType}}",
-    "balance":"{{balance}}"
+    "balance":"{{balance}}",
+    "PublicKey":"{{PublicKey}}"
 }
 
 ### Atualizar usuário
@@ -36,4 +37,4 @@ Content-Type: application/json
 
 
 ### Deletar usuário
-DELETE http://localhost:3000/user/user_N1q0ZzLUfPwrEuwK_7KB6
+DELETE http://localhost:3000/user/user_ips2IWwm6FPEOV3BNzbvS

@@ -20,4 +20,8 @@ export class CreateUserDto {
   @IsString()
    balance: string;
 
+  @IsString()
+  PublicKey: string;
+
+
 }

@@ -5,4 +5,5 @@ export declare class CreateUserDto {
     senha: string;
     acessType: string;
     balance: string;
+    PublicKey: string;
 }
